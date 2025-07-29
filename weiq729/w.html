@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pemulihan Dana Penipuan - Layanan Hukum Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FF8A50;
+            --dark-bg: #000000;
+            --light-bg: #111111;
+            --text-light: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('img/1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .main-button {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            border: none;
+            padding: 25px 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            animation: breathe 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .main-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .verification-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .verification-content {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+            border: 2px solid var(--primary-color);
+        }
+
+        .verification-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .verification-text {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .verification-question {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .verification-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            background: #222;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .verification-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .verification-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .verification-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+        }
+
+        .btn-cancel {
+            background: #666;
+            color: var(--text-light);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-cancel:hover {
+            background: #777;
+        }
+
+        .error-message {
+            color: #ff4444;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .main-button {
+                padding: 20px 50px;
+                font-size: 1.3rem;
+            }
+            
+            .verification-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .verification-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .verification-btn {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="main-button" onclick="r2()">💬 KONSULTASI GRATIS</button>
+
+    <!-- Verification Modal -->
+    <div id="verificationModal" class="verification-modal">
+        <div class="verification-content">
+            <h3 class="verification-title">Verifikasi Keamanan</h3>
+            <p class="verification-text">Kami akan mengalokasikan pengacara perlindungan hak profesional untuk Anda. Silakan masukkan kode verifikasi yang benar:</p>
+            <div id="verificationQuestion" class="verification-question">5 + 3 = ?</div>
+            <input type="number" id="verificationInput" class="verification-input" placeholder="Masukkan jawaban">
+            <div class="verification-buttons">
+                <button class="verification-btn btn-submit" onclick="verifyAnswer()">Kirim</button>
+                <button class="verification-btn btn-cancel" onclick="hideVerificationModal()">Batal</button>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentAnswer = 0;
+
+        // Generate verification question
+        function generateVerification() {
+            const num1 = Math.floor(Math.random() * 10);
+            const num2 = Math.floor(Math.random() * 10);
+            currentAnswer = num1 + num2;
+            return `${num1} + ${num2} = ?`;
+        }
+
+        // Show verification modal
+        function showVerificationModal() {
+            const modal = document.getElementById('verificationModal');
+            const question = document.getElementById('verificationQuestion');
+            const input = document.getElementById('verificationInput');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            question.textContent = generateVerification();
+            input.value = '';
+            errorMsg.textContent = '';
+            modal.style.display = 'flex';
+            input.focus();
+        }
+
+        // Hide verification modal
+        function hideVerificationModal() {
+            document.getElementById('verificationModal').style.display = 'none';
+        }
+
+        // Verify answer and redirect
+        function verifyAnswer() {
+            const input = document.getElementById('verificationInput');
+            const errorMsg = document.getElementById('errorMessage');
+            const userAnswer = parseInt(input.value);
+            
+            if (userAnswer === currentAnswer) {
+                hideVerificationModal();
+                window.open('https://wa.me/1234567890?text=Halo,%20saya%20tertarik%20dengan%20layanan%20pemulihan%20dana%20Anda', '_blank');
+            } else {
+                errorMsg.textContent = 'Kode verifikasi salah, silakan coba lagi!';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Main function
+        function r2() {
+            showVerificationModal();
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('verificationInput');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        verifyAnswer();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
