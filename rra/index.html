@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>
+ function k2() {
+           window.location.href = 'https://www.qq.com';
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI株式投資 - 未来への投資機会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        .premium-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            color: #ffffff;
+            border: 8px solid #fbbf24;
+            border-radius: 20px;
+            margin: 10px;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+        }
+        
+        .golden-accent {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .investment-card {
+            background: #f8f9fa;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            color: #333333;
+        }
+        
+        .hero-section {
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 22%;
+            border: 4px solid #fbbf24;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+        }
+        
+        .feature-check {
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 16px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+            animation: breathing 2s ease-in-out infinite;
+            border: none;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            min-width: 280px;
+            text-align: center;
+        }
+        
+        @keyframes breathing {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+        
+        @keyframes breathing-button {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .ai-analyze-btn {
+            animation: breathing-button 2s ease-in-out infinite;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+            margin: 3rem 0;
+        }
+        
+        .ai-highlight {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .risk-notice {
+            background: #f8f9fa;
+            border-left: 4px solid #ef4444;
+            color: #333333;
+        }
+        
+        .text-4xl {
+            font-size: 1rem !important;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .progress-modal {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .completion-modal {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="premium-gradient min-h-screen text-white">
+    
+    <!-- ヒーローセクション -->
+    <section class="hero-section min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="container mx-auto max-w-4xl text-center relative z-10">
+            <img src="img/1.png" 
+                 alt="1" 
+                 class="profile-avatar mx-auto mb-8">
+            
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
+              暴落相場こそ、"知っているか知らないか"で未来が変わる。 資産を守り、増やすための第一歩を今すぐ
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
+                株価が暴落して不安になっていませんか？ 実はこの局面、「資産を増やしている人」がいます
+            </p>
+            
+			<p class="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
+                現在、先生のLINEを追加して、「優良株の受け取り」を送信すれば、短期急騰する優良株と2025年の株市の最新情報分析を無料で受け取ることができます
+            </p>
+			
+            <div class="investment-card p-8 rounded-2xl mb-8 mx-auto max-w-2xl">
+                <h2 class="text-2xl font-semibold mb-6 golden-accent">
+                    株式市場の崩壊を心配していませんか？
+                </h2>
+                <p class="text-lg mb-6 text-gray-700">
+                    実際、この期間に資産を増やしている人たちがいます。
+                </p>
+                
+                <div class="space-y-4 text-left">
+                    <div class="flex items-start space-x-3">
+                        <span class="feature-check">✔️</span>
+                        <span class="text-lg">逆張り投資戦略：市場崩壊を機会として捉える。</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="feature-check">✔️</span>
+                        <span class="text-lg">これはNISAやiDeCoでは保護できない資産を回復する方法です。</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="feature-check">✔️</span>
+                        <span class="text-lg">初心者でも、スマートフォン一台で始められます。</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="k2()" class="cta-button text-gray-900 font-semibold px-8 py-4 rounded-full text-lg">
+                LINEで優良株情報を受け取る
+            </button>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- AI投資セクション -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                    AI株投資：未来の機会を掴む
+                </h2>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    テクノロジーが急速に発展する今日、人工知能（AI）が投資の新たな注目株となっています。AI株投資により、あなたは：
+                </p>
+            </div>
+            
+            <!-- AI分析機能 -->
+            <div class="ai-analysis-section mb-12">
+                <div class="investment-card p-8 rounded-2xl mx-auto max-w-2xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-center golden-accent">
+                        無料AI株式分析
+                    </h3>
+                    <div class="space-y-4">
+                        <input type="text" 
+                               id="stockInput" 
+                               placeholder="会社名または株式コードを入力してください" 
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-yellow-500 focus:outline-none text-base text-gray-800">
+                        <button onclick="startAIAnalysis()" 
+                                id="analyzeBtn"
+                                class="w-full cta-button ai-analyze-btn text-gray-900 font-semibold px-8 py-4 rounded-full text-lg">
+                            AI分析を開始
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="investment-card p-8 rounded-2xl mb-8">
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <span class="feature-check text-2xl">✔️</span>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-2 text-gray-800">イノベーションの波を掴む</h4>
+                            <p class="text-gray-600">AI技術があらゆる業界を再構築し、巨大な市場機会をもたらしています。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <span class="feature-check text-2xl">✔️</span>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-2 text-gray-800">資産価値の向上を実現</h4>
+                            <p class="text-gray-600">企業のデジタル変革が加速する中、AI企業の潜在力は継続的に上昇しています。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <span class="feature-check text-2xl">✔️</span>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-2 text-gray-800">柔軟な選択</h4>
+                            <p class="text-gray-600">大手テック企業から新興スタートアップまで、さまざまなリスク選好に対応した投資ニーズを満たします。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mb-8">
+                <img src="img/3.jpg" 
+                     alt="1" 
+                     class="w-72 h-auto mx-auto mb-6 rounded-lg">
+                     
+                 
+            </div>
+            
+           
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- リスク提示セクション -->
+    <section class="py-12 px-4">
+        <div class="container mx-auto max-w-3xl">
+            <div class="risk-notice p-6 rounded-xl">
+                <h3 class="text-xl font-semibold mb-4 text-red-400">🔹 重要なリスク提示</h3>
+                <div class="space-y-3 text-gray-700">
+                    <p>• 市場にはリスクがあり、投資は慎重に行う必要があります。過去のパフォーマンスは将来の結果を保証するものではありません。</p>
+                    <p>• コース内容とツールは参考目的のみであり、個別化された投資アドバイスを構成するものではありません。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="py-8 px-4 border-t border-gray-600">
+        <div class="container mx-auto max-w-4xl text-center">
+            <div class="space-x-6">
+                <a href="#" class="text-gray-400 hover:text-golden-accent transition-colors">
+                    プライバシーポリシー
+                </a>
+                <a href="#" class="text-gray-400 hover:text-golden-accent transition-colors">
+                    利用規約
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 浮動アクションボタン -->
+    <button onclick="k2()" class="floating-action">
+        📈 LINEで優良株情報を今すぐ受け取る
+    </button>
+    
+    <!-- 分析进度弹窗 -->
+    <div id="progressModal" class="modal-overlay">
+        <div class="progress-modal">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">AI分析中...</h3>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <p id="progressText" class="text-gray-600">市場分析を実行中...</p>
+        </div>
+    </div>
+
+    <!-- 完成结果弹窗 -->
+    <div id="completionModal" class="modal-overlay">
+        <div class="completion-modal">
+            <div class="text-6xl mb-4">✅</div>
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">あなたの株式分析レポートが完成しました。</h3>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                LINEをクリックして受け取ってください。さらに、今後上昇する3つの株式リストもプレゼントします。
+            </p>
+            <p class="text-base text-gray-500 mb-8">詳細はLINEをご覧ください。</p>
+            <div class="space-y-4">
+                <button onclick="k2(); closeCompletionModal();" class="w-full cta-button text-gray-900 font-semibold px-8 py-4 rounded-full text-lg">
+                    LINEで受け取る
+                </button>
+                <button onclick="closeCompletionModal()" class="w-full bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-full text-base hover:bg-gray-300 transition-colors">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+        
+        function startAIAnalysis() {
+            const stockInput = document.getElementById('stockInput');
+            const stockValue = stockInput.value.trim();
+            
+            if (!stockValue) {
+                alert('会社名または株式コードを入力してください');
+                return;
+            }
+            
+            // 显示进度弹窗
+            const modal = document.getElementById('progressModal');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            modal.style.display = 'flex';
+            
+            // 进度条动画
+            const steps = [
+                { width: '30%', text: '市場分析を実行中...' },
+                { width: '60%', text: '最新ニュース分析中...' },
+                { width: '90%', text: '歴史データ分析中...' },
+                { width: '100%', text: '分析完了！' }
+            ];
+            
+            let currentStep = 0;
+            
+            const updateProgress = () => {
+                if (currentStep < steps.length) {
+                    progressFill.style.width = steps[currentStep].width;
+                    progressText.textContent = steps[currentStep].text;
+                    currentStep++;
+                    setTimeout(updateProgress, 700);
+                } else {
+                    // 分析完成
+                    modal.style.display = 'none';
+                    showCompletionMessage();
+                }
+            };
+            
+            updateProgress();
+        }
+        
+        function showCompletionMessage() {
+            document.getElementById('completionModal').style.display = 'flex';
+        }
+        
+        function closeCompletionModal() {
+            document.getElementById('completionModal').style.display = 'none';
+        }
+        
+        // 深色模式检测
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</body>
+</html>
