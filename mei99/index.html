@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Intelligent Stock Diagnosis System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-dark': '#4B4BC8',
+                        'bg-light': '#FFFFFF',
+                        'bg-dark': '#181818'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #5D5CDE 0%, #764ba2 100%);
+        }
+        
+        .gradient-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-success {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #5D5CDE 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .hover-transform {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-transform:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-hover:active {
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17380393825"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17380393825');
+        gtag('config', 'G-5EC2BLJ6MD');
+    </script>
+</head>
+
+<body class="font-sans gradient-bg min-h-screen text-gray-800 dark:text-gray-200">
+    <div class="max-w-6xl mx-auto p-5">
+        <!-- Header -->
+        <header class="text-center mb-10 text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg">
+                🤖 AI Intelligent Stock Diagnosis System
+            </h1>
+            <p class="text-lg opacity-90">Professional stock analysis, precise investment advice</p>
+        </header>
+
+        <!-- Main Diagnosis Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-10 shadow-2xl mb-8">
+            <!-- Search Section -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold mb-5 text-gray-700 dark:text-gray-300">
+                    Enter stock code to start diagnosis
+                </h2>
+                <p id="errorMessage" class="hidden mb-3 text-red-500 font-bold">
+                    Please enter a valid stock code
+                </p>
+                
+                <div class="flex flex-col max-w-2xl mx-auto gap-4 md:gap-0 md:flex-row md:rounded-full md:overflow-hidden md:shadow-lg">
+                    <input 
+                        type="text" 
+                        id="stockInput"
+                        class="w-full md:flex-1 px-6 py-5 text-lg md:text-base border-4 md:border-3 border-gray-600 dark:border-gray-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 outline-none transition-all duration-300 focus:border-primary focus:bg-white dark:focus:bg-gray-600 focus:shadow-xl focus:shadow-primary/40 hover:border-gray-700 dark:hover:border-gray-300 rounded-2xl md:rounded-l-full md:rounded-r-none shadow-lg md:shadow-none"
+                        placeholder="Enter stock code: AAPL, TSLA, GOOGL..."
+                    >
+                    <button 
+                        onclick="startDiagnosis()"
+                        class="w-full md:w-auto gradient-primary text-white px-8 py-5 md:py-4 text-lg md:text-base font-bold uppercase tracking-wide btn-hover shadow-lg shadow-primary/40 rounded-2xl md:rounded-r-full md:rounded-l-none"
+                    >
+                        Start Diagnosis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+                <div class="gradient-card text-white p-6 rounded-2xl text-center hover-transform shadow-lg">
+                    <div class="text-4xl mb-3">📊</div>
+                    <h3 class="text-lg font-bold mb-2">Technical Analysis</h3>
+                    <p class="text-sm opacity-90">Professional K-line chart analysis</p>
+                </div>
+                
+                <div class="gradient-card text-white p-6 rounded-2xl text-center hover-transform shadow-lg">
+                    <div class="text-4xl mb-3">💰</div>
+                    <h3 class="text-lg font-bold mb-2">Financial Analysis</h3>
+                    <p class="text-sm opacity-90">Deep financial data mining</p>
+                </div>
+                
+                <div class="gradient-card text-white p-6 rounded-2xl text-center hover-transform shadow-lg">
+                    <div class="text-4xl mb-3">🎯</div>
+                    <h3 class="text-lg font-bold mb-2">Risk Assessment</h3>
+                    <p class="text-sm opacity-90">Intelligent risk warning system</p>
+                </div>
+                
+                <div class="gradient-card text-white p-6 rounded-2xl text-center hover-transform shadow-lg">
+                    <div class="text-4xl mb-3">🚀</div>
+                    <h3 class="text-lg font-bold mb-2">Trend Prediction</h3>
+                    <p class="text-sm opacity-90">AI algorithm trend forecasting</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Hot Stocks -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-xl mb-6">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 pb-4 border-b-2 border-gray-100 dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">📈 Today's Hot Stocks</h2>
+                <div class="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-0" id="today-date"></div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="gradient-primary text-white">
+                            <th class="p-4 text-center font-bold">Rank</th>
+                            <th class="p-4 text-center font-bold">Stock Code</th>
+                            <th class="p-4 text-center font-bold">Industry Category</th>
+                            <th class="p-4 text-center font-bold">Diagnosis Score</th>
+                            <th class="p-4 text-center font-bold">Change %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">1</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('AAPL')">AAPL</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">Technology/Consumer Electronics</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 font-bold text-red-500">92.5</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-red-500">+2.34%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">2</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('TSLA')">TSLA</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">Automotive/New Energy</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 font-bold text-red-500">89.3</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-red-500">+1.87%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">3</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('GOOGL')">GOOGL</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">Technology/Internet</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 font-bold text-red-500">87.8</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-green-500">-0.45%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">4</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('MSFT')">MSFT</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">Technology/Software</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 font-bold text-orange-500">85.2</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-red-500">+0.92%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center">5</td>
+                            <td class="p-4 text-center">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('AMZN')">AMZN</span>
+                            </td>
+                            <td class="p-4 text-center">Consumer/E-commerce</td>
+                            <td class="p-4 text-center font-bold text-orange-500">83.7</td>
+                            <td class="p-4 text-center text-red-500">+1.23%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- AI Recommended Stocks -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-xl mb-6">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 pb-4 border-b-2 border-gray-100 dark:border-gray-700">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">🎯 AI Recommended Stocks</h2>
+                <div class="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-0">Based on big data analysis</div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="gradient-primary text-white">
+                            <th class="p-4 text-center font-bold">Recommendation</th>
+                            <th class="p-4 text-center font-bold">Stock Code</th>
+                            <th class="p-4 text-center font-bold">Company Name</th>
+                            <th class="p-4 text-center font-bold">Target Price</th>
+                            <th class="p-4 text-center font-bold">Expected Return</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">⭐⭐⭐⭐⭐</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('NVDA')">NVDA</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">NVIDIA</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">$850.00</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-red-500">+15.2%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">⭐⭐⭐⭐</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('META')">META</span>
+                            </td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">Meta Platforms</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700">$520.00</td>
+                            <td class="p-4 text-center border-b border-gray-100 dark:border-gray-700 text-red-500">+12.8%</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                            <td class="p-4 text-center">⭐⭐⭐⭐</td>
+                            <td class="p-4 text-center">
+                                <span class="font-bold text-primary cursor-pointer hover:text-primary-dark hover:underline" onclick="analyzeStock('AMD')">AMD</span>
+                            </td>
+                            <td class="p-4 text-center">Advanced Micro Devices</td>
+                            <td class="p-4 text-center">$180.00</td>
+                            <td class="p-4 text-center text-red-500">+10.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Modal -->
+    <div id="analysisModal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 justify-center items-center p-5">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 max-w-lg w-full text-center relative max-h-screen overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-3 right-5 text-2xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 z-10">×</button>
+            
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">AI Stock Diagnosis in Progress...</h2>
+            
+            <div id="progressContainer" class="mb-8">
+                <div class="mb-6">
+                    <div class="text-left mb-2 font-bold text-gray-700 dark:text-gray-300">Technical Indicator Analysis</div>
+                    <div class="w-full h-5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div id="progress1" class="h-full progress-fill w-0 rounded-full"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="text-left mb-2 font-bold text-gray-700 dark:text-gray-300">Fundamental Analysis</div>
+                    <div class="w-full h-5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div id="progress2" class="h-full progress-fill w-0 rounded-full"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="text-left mb-2 font-bold text-gray-700 dark:text-gray-300">Market Sentiment Analysis</div>
+                    <div class="w-full h-5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div id="progress3" class="h-full progress-fill w-0 rounded-full"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="text-left mb-2 font-bold text-gray-700 dark:text-gray-300">Risk Assessment</div>
+                    <div class="w-full h-5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div id="progress4" class="h-full progress-fill w-0 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultSection" class="hidden">
+                <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+                    ✅ <span id="stockSymbol"></span> Diagnosis Report Generated
+                </h3>
+                <p class="mb-6 text-gray-600 dark:text-gray-400">
+                    Get complete stock analysis report, including buy/sell recommendations and risk alerts
+                </p>
+                <button onclick="showline()" class="gradient-success text-white px-8 py-4 rounded-full text-base font-bold uppercase tracking-wide btn-hover shadow-lg shadow-green-500/40 w-full">
+                    📱 Get Complete Report via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 mt-10 border-t border-white border-opacity-20">
+        <a href="disclaimer.html" class="text-white text-opacity-80 hover:text-white hover:underline mx-4 block md:inline mb-3 md:mb-0 transition-colors duration-200">Disclaimer</a>
+        <a href="terms.html" class="text-white text-opacity-80 hover:text-white hover:underline mx-4 block md:inline mb-3 md:mb-0 transition-colors duration-200">Terms of Use</a>
+        <a href="privacy.html" class="text-white text-opacity-80 hover:text-white hover:underline mx-4 block md:inline transition-colors duration-200">Privacy Policy</a>
+    </footer>
+
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Set current date
+        document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-US');
+
+        // Google Analytics conversion tracking
+        function gtag_report_conversion(url) {
+            const callback = function () {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+
+            const transactionId = 'txn_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17380393825/haK9CPi51_0aEOGGz99A',
+                'transaction_id': transactionId,
+                'event_callback': callback
+            });
+
+            return false;
+        }
+
+        function showline() {
+            gtag_report_conversion("https://stockintel.xyz/ws/");
+        }
+
+        // Start diagnosis function
+        function startDiagnosis() {
+            const stockInput = document.getElementById('stockInput');
+            const symbol = stockInput.value.trim().toUpperCase();
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (!symbol) {
+                errorMessage.classList.remove('hidden');
+                stockInput.focus();
+                return;
+            }
+
+            errorMessage.classList.add('hidden');
+            analyzeStock(symbol);
+        }
+
+        // Analyze stock function
+        function analyzeStock(symbol) {
+            document.getElementById('stockSymbol').textContent = symbol;
+            document.getElementById('analysisModal').classList.remove('hidden');
+            document.getElementById('analysisModal').classList.add('flex');
+            document.getElementById('progressContainer').classList.remove('hidden');
+            document.getElementById('resultSection').classList.add('hidden');
+
+            // Reset progress bars
+            resetProgress();
+
+            // Start progress animation
+            setTimeout(() => updateProgress('progress1', 100), 100);
+            setTimeout(() => updateProgress('progress2', 100), 400);
+            setTimeout(() => updateProgress('progress3', 100), 700);
+            setTimeout(() => updateProgress('progress4', 100), 1000);
+
+            // Show results
+            setTimeout(() => {
+                document.getElementById('progressContainer').classList.add('hidden');
+                document.getElementById('resultSection').classList.remove('hidden');
+            }, 1400);
+        }
+
+        // Update progress bar
+        function updateProgress(id, percentage) {
+            document.getElementById(id).style.width = percentage + '%';
+        }
+
+        // Reset progress bars
+        function resetProgress() {
+            ['progress1', 'progress2', 'progress3', 'progress4'].forEach(id => {
+                document.getElementById(id).style.width = '0%';
+            });
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('analysisModal').classList.add('hidden');
+            document.getElementById('analysisModal').classList.remove('flex');
+        }
+
+        // Enter key search
+        document.getElementById('stockInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                startDiagnosis();
+            }
+        });
+
+        // Click outside modal to close
+        document.getElementById('analysisModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
