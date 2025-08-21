@@ -1,216 +1,160 @@
-<html lang="en"><head></head><body>﻿
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>2025年最强大的人工智能</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-	
-	<!-- 谷歌像素开始配置，改为你自己的谷歌后台的广告像素和事件-->
-	<!-- 谷歌像素开始-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17220074544">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17220074544');
-</script>
-<!-- 谷歌像素结束-->
-
-
-<!-- 谷歌事件开始-->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17220074544/xVZWCID1nIIbELD4lZNA',
-      'value': 1.0,
-      'currency': 'USD',
-      'event_callback': callback
-  });
-  return false;
-}
-</script>
-<!-- 谷歌事件解释-->
-
-     <script>
-            
-		function aa2()
-		{
-		// 这个地方配置跳转地址QQ.COM 改为你自己的跳转地址
-		gtag_report_conversion('https://www.qq.com'); 
-		}
-			</script>
-    <script src="js/main2.js"></script>
-	<style>
-    /* 解决内容未居中问题 */
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: #000;
-        color: #fff;
-        overflow: hidden; /* 禁止多余滚动 */
-    }
-
-    #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
-
-    main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%; /* 使内容占满视口高度 */
-        padding: 0; /* 去除多余的顶部填充 */
-        box-sizing: border-box;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 400px;
-        padding: 16px; /* 适当缩小边距 */
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .robot-video img {
-        width: 50%;
-        height: auto;
-        object-fit: contain;
-        background-color: transparent !important;
-    }
-</style>
+    <title>2025年最强大的人工智能</title>
     <style>
-        #particles-js {position: fixed;width: 100%;height: 100%;top:0;left: 0;z-index: -1;}
-        body {margin: 0; padding: 0; min-height: 100vh; min-height: -webkit-fill-available;}
-        html {height: -webkit-fill-available;}
-        main {padding-top: env(safe-area-inset-top, 20px);}
+        /* 全局样式 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden; /* 禁止滚动 */
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* 粒子背景在内容后面 */
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 内容上下分布 */
+            align-items: center;
+            width: 100%;
+            height: 100%; /* 占满视口高度 */
+            padding: 16px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Logo 样式 */
+        .logo {
+            width: 100%;
+            max-width: 120px;
+            margin: 0 auto;
+            padding-top: 16px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 内容容器 */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 16px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .robot-video img {
+            width: 50%;
+            height: auto;
+            object-fit: contain;
+            animation: ai-float 2.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes ai-float {
+            0% {
+                transform: translateY(0);
+                filter: drop-shadow(0 2px 8px rgba(255, 162, 0, 0.5));
+            }
+            50% {
+                transform: translateY(-10px);
+                filter: drop-shadow(0 4px 16px rgba(255, 162, 0, 0.7));
+            }
+            100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 2px 8px rgba(255, 162, 0, 0.5));
+            }
+        }
+
+        /* 按钮样式 */
+        .btn {
+            width: 100%;
+            padding: 14px 0;
+            border: none;
+            border-radius: 24px;
+            background: linear-gradient(90deg, #9244d5 0%, #4b1fbb 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 16px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #4b1fbb 0%, #9244d5 100%);
+        }
+
+        /* 适配小屏设备 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+            }
+
+            .robot-video img {
+                width: 60%;
+            }
+
+            .btn {
+                padding: 12px 0;
+                font-size: 1rem;
+            }
+        }
     </style>
-
-
+</head>
+<body>
+    <!-- 粒子背景 -->
     <div id="particles-js"></div>
+
+    <!-- 主内容 -->
     <main>
+        <!-- Logo 部分 -->
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+
+        <!-- 中间内容 -->
         <div class="container">
             <div class="robot-video">
-              <img src="images/AIcs.gif" alt="AI Background Animation" style="
-                    background-color: transparent !important; 
-                    width: 50%; 
-                    height: 100%; 
-                    object-fit: contain;
-                ">
+                <img src="images/AIcs.gif" alt="AI 动态背景">
             </div>
-            
-			<h1 class="title">2025 最强 AI</h1>
-<h2 class="subtitle">股票价格预测</h2>
-<section class="card">
-    <div class="accuracy">
-        预测准确率达到 <span class="percent">99.8%</span>
-    </div>
-    <div class="desc">
-        在下方输入您的股票代码或感兴趣的股票代码，AI 系统将在 1.5 秒内完成分析。<br>
-        目前有 <span class="highlight">46,863</span> 人正在免费查看完整报告！
-    </div>
-</section>
-<form class="input-group" autocomplete="off" onsubmit="return false;">
-    <input type="text" id="inputbox" placeholder="输入公司名称或股票代码" aria-label="公司名称或股票代码">
-</form>
-<button class="btn" type="button">开始分析</button>
-        </div>
-        <div class="ai-modal" id="ai-modal" style="display: none;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.7);
-    align-content: center;">
-            <div class="ai-progress" id="ai-progress">
-                <div class="pro-box" style="background:rgb(5 16 26);border-radius:12px;padding:32px 18px;max-width:340px;margin:60px auto;">
-                    <div class="title" style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
-                        <div class="word" style="font-size:20px;font-weight:bold;">分析正在进行中...</div>
-                    </div>
-                    <div class="progress-box">
-                        <div class="item" style="margin-bottom:16px;">
-                            <div class="i-title" style="font-size:15px;">市场分析</div>
-                            <div class="layui-progress layui-progress-big" lay-filter="progress-1" style="background:#eee;border-radius:8px;height:16px;">
-                                <div class="layui-progress-bar" id="bar-1" lay-percent="0%" style="width: 0%;background:#00dcf4;height:100%;border-radius:8px;"></div>
-                            </div>
-                        </div>
-                        <div class="item" style="margin-bottom:16px;">
-                            <div class="i-title" style="font-size:15px;">图表分析</div>
-                            <div class="layui-progress layui-progress-big" lay-filter="progress-2" style="background:#eee;border-radius:8px;height:16px;">
-                                <div class="layui-progress-bar" id="bar-2" lay-percent="0%" style="width: 0%;background:#00dcf4;height:100%;border-radius:8px;"></div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="i-title" style="font-size:15px;">新闻分析</div>
-                            <div class="layui-progress layui-progress-big" lay-filter="progress-3" style="background:#eee;border-radius:8px;height:16px;">
-                                <div class="layui-progress-bar" id="bar-3" lay-percent="0%" style="width: 0%;background:#00dcf4;height:100%;border-radius:8px;"></div>
-                            </div>
-                        </div>
-                    </div>
+            <h1 class="title">2025 最强 AI</h1>
+            <h2 class="subtitle">股票价格预测</h2>
+            <section class="card">
+                <div class="accuracy">
+                    预测准确率达到 <span class="percent">99.8%</span>
                 </div>
-            </div>
-<div class="ai-result" id="ai-result" style="display:none;">
-                <div class="result-box" style="background:rgb(5 16 26);border-radius:12px;padding:32px 18px;max-width:340px;height: inherit;margin:60px auto;">
-                <div class="title" style="margin-bottom:18px;">
-    <div class="word" style="font-size:18px;font-weight:bold;">
-        <span id="tips-code" style="color:#15a223;"></span> 📊 股票报告已准备好
-    </div>
-</div>
-<div class="result-con">
-    <div class="con" style="font-size:15px; margin-bottom:18px; color: #ffffff; text-align: center;">
-        <div>
-            🔍 您的分析报告已生成。通过 <strong>WhatsApp</strong> 联系我们获取报告，同时我们还将分享本周三有望上涨的三只潜力股。
-            <br><br>
-            ✅ 报告内容包括：
-            <ul style="padding-left: 0; list-style: none; margin-top: 8px; text-align: center;">
-                <li>短期价格趋势预测</li>
-                <li>买入和卖出时机建议</li>
-                <li>分析师信心评级</li>
-            </ul>
-            <br>
-            ⏰ <span style="color: #e67e22; font-weight: bold;">今日更新 -- 免费访问即将结束</span>
-            <br>
-            💬 您的投资助手在线为您服务。
+                <div class="desc">
+                    在下方输入您的股票代码或感兴趣的股票代码，AI 系统将在 1.5 秒内完成分析。<br>
+                    目前有 <span class="highlight">46,863</span> 人正在免费查看完整报告！
+                </div>
+            </section>
+            <form class="input-group" autocomplete="off" onsubmit="return false;">
+                <input type="text" id="inputbox" placeholder="输入公司名称或股票代码" aria-label="公司名称或股票代码">
+            </form>
+            <button class="btn" type="button">开始分析</button>
         </div>
-    </div>
-    <button class="btn" onclick="aa2()" id="chat-btn" style="background:#15a223;color:#fff;padding:12px 0;border-radius:8px;text-align:center;cursor:pointer;display:flex;justify-content:center;align-items:center;width:100%;margin:0 auto;animation:breath 1.6s infinite;" type="button">
-        🔵 通过 WhatsApp 免费获取报告
-    </button>
-</div>
-</div>
-</div>
-</div>
-</main>
-<footer class="footer" style="width:100%;max-width:400px;margin:32px auto 0 auto;padding:0 16px 24px 16px;box-sizing:border-box;text-align:center;font-size:0.92rem;color:#fad6ab">
-    <div style="margin-bottom:6px;">免责声明：本网站信息不构成财务建议，使用风险自负。</div>
-    <a href="terms.html" style="color:#fad6ab;text-decoration:underline;margin:0 8px;">使用条款</a>
-    <a href="privacy.html" style="color:#fad6ab;text-decoration:underline;margin:0 8px;">隐私政策</a>
-</footer>
-<div id="cookie-banner" style="display:flex;align-items:center;justify-content:center;position:fixed;left:0;right:0;bottom:0;z-index:999;background:rgb(20 30 60 / 39%);color:#fad6ab;padding:14px 12px 14px 12px;font-size:0.98rem;box-shadow:0 -2px 12px rgba(0,0,0,0.13);">
-    <span style="flex:1;">本网站使用 Cookie 以确保您获得最佳体验。</span>
-    <button id="cookie-accept" style="margin-left:18px;padding:7px 18px;border:none;border-radius:16px;background-color:#ffa200;color:#fff;font-weight:600;cursor:pointer;">允许</button>
-</div>
-      
+    </main>
+
+    <!-- 粒子背景脚本 -->
     <script src="js/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
@@ -222,31 +166,17 @@ function gtag_report_conversion(url) {
                         "value_area": 800
                     }
                 },
-                "color": {
-                    "value": ["#FFD700", "#FFA500", "#FFCC00"]  // 多种金色层次
-                },
-                "shape": {
-                    "type": "circle"
-                },
+                "color": { "value": ["#FFD700", "#FFA500", "#FFCC00"] },
+                "shape": { "type": "circle" },
                 "opacity": {
                     "value": 0.8,
                     "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 0.8,
-                        "opacity_min": 0.4,
-                        "sync": false
-                    }
+                    "anim": { "enable": true, "speed": 0.8, "opacity_min": 0.4, "sync": false }
                 },
                 "size": {
                     "value": 4,
                     "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 3,
-                        "size_min": 0.8,
-                        "sync": false
-                    }
+                    "anim": { "enable": true, "speed": 3, "size_min": 0.8, "sync": false }
                 },
                 "line_linked": {
                     "enable": true,
@@ -268,29 +198,16 @@ function gtag_report_conversion(url) {
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"  // hover 有互动感
-                    },
-                    "onclick": {
-                        "enable": false
-                    },
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": false },
                     "resize": true
-                }
-            },
-            "modes": {
-                "grab": {
-                    "distance": 200,
-                    "line_linked": {
-                        "opacity": 0.5
-                    }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }
                 }
             },
             "retina_detect": true
         });
-
     </script>
-
-
-
-</body></html>
+</body>
+</html>
